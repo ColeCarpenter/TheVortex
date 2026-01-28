@@ -1,1 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Vortex</title>
+  <meta name="description" content="The Vortex — Lose track of time." />
+  <meta name="theme-color" content="#0b0f19" />
+
+  <!-- Social preview -->
+  <meta property="og:title" content="The Vortex" />
+  <meta property="og:description" content="Lose track of time." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #070a12;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.66);
+      --hair: rgba(255,255,255,.14);
+      --shadow: 0 24px 60px rgba(0,0,0,.45);
+      --r: 18px;
+    }
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 20%, rgba(99,102,241,.22), transparent 55%),
+        radial-gradient(900px 600px at 80% 30%, rgba(16,185,129,.16), transparent 60%),
+        radial-gradient(1200px 800px at 50% 100%, rgba(236,72,153,.10), transparent 55%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+    a{ color: inherit; text-decoration: none; }
+    .wrap{
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 26px 18px 56px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 8px 6px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+    .mark{
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background:
+        radial-gradient(18px 18px at 30% 35%, rgba(255,255,255,.35), transparent 65%),
+        conic-gradient(from 210deg, rgba(99,102,241,.95), rgba(16,185,129,.75), rgba(236,72,153,.70), rgba(99,102,241,.95));
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .mark:after{
+      content:"";
+      position:absolute; inset:-20%;
+      background: radial-gradient(circle at 50% 50%, rgba(0,0,0,.15), rgba(0,0,0,.65));
+      mix-blend-mode: multiply;
+    }
+    .brand h1{
+      font-size: 14px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin: 0;
+      color: rgba(255,255,255,.88);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border: 1px solid var(--hair);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      backdrop-filter: blur(10px);
+    }
+    .chip span{
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .dot{
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: rgba(16,185,129,.9);
+      box-shadow: 0 0 0 4px rgba(16,185,129,.15);
+    }
+
+    main{
+      margin-top: 34px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+    @media (max-width: 860px){
+      main{ grid-template-columns: 1fr; }
+      .brand{ min-width: unset; }
+    }
+
+    .card{
+      border: 1px solid var(--hair);
+      border-radius: var(--r);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      overflow:hidden;
+    }
+    .hero{
+      padding: 28px 26px 22px;
+      position: relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset: -2px;
+      background:
+        radial-gradient(320px 220px at 20% 20%, rgba(99,102,241,.26), transparent 60%),
+        radial-gradient(340px 220px at 90% 30%, rgba(16,185,129,.18), transparent 60%),
+        radial-gradient(380px 260px at 60% 100%, rgba(236,72,153,.12), transparent 60%);
+      pointer-events:none;
+      filter: blur(8px);
+      opacity: .9;
+    }
+    .hero > *{ position: relative; }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--hair);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.78);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .kicker b{ color: rgba(255,255,255,.92); font-weight: 600; }
+    .headline{
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 4.8vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+    .sub{
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+    .ctaRow{
+      margin-top: 18px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--hair);
+      background: rgba(255,255,255,.06);
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22); }
+    .btn.primary{
+      background: rgba(99,102,241,.18);
+      border-color: rgba(99,102,241,.45);
+    }
+    .btn.primary:hover{
+      background: rgba(99,102,241,.24);
+      border-color: rgba(99,102,241,.60);
+    }
+    .btn .arrow{
+      width: 18px; height: 18px;
+      border-radius: 6px;
+      background: rgba(255,255,255,.10);
+      display:grid;
+      place-items:center;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .side{
+      padding: 18px;
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .panel{
+      border: 1px solid var(--hair);
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
+      padding: 14px 14px 12px;
+    }
+    .panel h3{
+      margin: 0 0 6px;
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.82);
+    }
+    .panel p{
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .list{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display:flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding: 10px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .bullet{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.28);
+      margin-top: 4px;
+      flex: 0 0 auto;
+    }
+    .li span{
+      font-size: 13px;
+      color: rgba(255,255,255,.78);
+      line-height: 1.4;
+    }
+
+    footer{
+      margin-top: 18px;
+      padding: 14px 8px;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap: 10px;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+    }
+    .ig{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--hair);
+      background: rgba(255,255,255,.03);
+    }
+    .ig svg{ opacity: .85; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <h1>THE VORTEX</h1>
+      </div>
+
+      <div class="nav">
+        <div class="chip" title="Status">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Building something.</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="card hero">
+        <div class="kicker"><b>THE VORTEX</b> / Niagara</div>
+        <h2 class="headline">Lose track of time.</h2>
+        <p class="sub">
+          The Vortex started as a place you’d end up for “one beer” — then look up and realize hours are gone.
+          Same energy, built into a brand.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="https://instagram.com/Thevortex" target="_blank" rel="noopener">
+            Follow on Instagram <span class="arrow">↗</span>
+          </a>
+          <a class="btn" href="#about">
+            What is this? <span class="arrow">→</span>
+          </a>
+        </div>
+      </section>
+
+      <aside class="card side" id="about">
+        <div class="panel">
+          <h3>What we’re building</h3>
+          <p>
+            A clean, modern beer brand built around good nights, good people, and the kind of hang that pulls you in.
+          </p>
+          <ul class="list">
+            <li class="li"><span class="bullet" aria-hidden="true"></span><span>Simple, drinkable, repeatable.</span></li>
+            <li class="li"><span class="bullet" aria-hidden="true"></span><span>Community first. Hype last.</span></li>
+            <li class="li"><span class="bullet" aria-hidden="true"></span><span>We’ll share updates when it’s real.</span></li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Origin</h3>
+          <p>
+            “The Vortex” was the basement where time disappeared — beers, friends, and hours you didn’t notice passing.
+            We’re turning that feeling into something you can find outside the basement too.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> The Vortex</div>
+      <a class="ig" href="https://instagram.com/Thevortex" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Z" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M17.7 6.6h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span>@Thevortex</span>
+      </a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
