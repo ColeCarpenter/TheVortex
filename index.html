@@ -5,69 +5,59 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Vortex Brewing Co.</title>
   <meta name="description" content="The Vortex Brewing Co. — Lose track of time." />
-  <meta name="theme-color" content="#0b0f19" />
 
-  <!-- Social preview -->
-  <meta property="og:title" content="The Vortex Brewing Co." />
-  <meta property="og:description" content="Lose track of time." />
-  <meta property="og:type" content="website" />
-
-  <!-- Font -->
+  <!-- Fonts: brewery-ish (display + clean body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #070a12;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.09);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.66);
-      --hair: rgba(255,255,255,.14);
-      --hair2: rgba(255,255,255,.10);
-      --shadow: 0 24px 60px rgba(0,0,0,.45);
+      --paper: #f5f1e8;
+      --paper2:#efe9dc;
+      --ink: #121212;
+      --muted: rgba(18,18,18,.72);
+      --hair: rgba(18,18,18,.16);
+      --hair2: rgba(18,18,18,.10);
+      --card: rgba(255,255,255,.55);
+      --card2: rgba(255,255,255,.72);
+      --shadow: 0 18px 40px rgba(0,0,0,.10);
       --r: 18px;
-      --accent: rgba(255,255,255,.18);
-      --max: 1100px;
+      --max: 1080px;
     }
+
     *{ box-sizing: border-box; }
-    html, body{ height: 100%; }
+    html,body{ height:100%; }
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
+      color: var(--ink);
       background:
-        radial-gradient(900px 600px at 20% 15%, rgba(99,102,241,.18), transparent 55%),
-        radial-gradient(900px 600px at 80% 20%, rgba(16,185,129,.12), transparent 60%),
-        radial-gradient(1200px 900px at 50% 110%, rgba(236,72,153,.09), transparent 55%),
-        var(--bg);
-      overflow-x: hidden;
+        radial-gradient(900px 600px at 20% 10%, rgba(0,0,0,.04), transparent 55%),
+        radial-gradient(900px 600px at 85% 20%, rgba(0,0,0,.03), transparent 60%),
+        linear-gradient(0deg, var(--paper2), var(--paper));
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      overflow-x:hidden;
     }
-    a{ color: inherit; text-decoration: none; }
+
+    a{ color: inherit; text-decoration:none; }
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 18px 18px 56px;
+      padding: 22px 16px 60px;
     }
 
-    /* Header */
-    header{
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: linear-gradient(180deg, rgba(7,10,18,.92), rgba(7,10,18,.55));
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .headInner{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 14px 18px;
+    /* Top bar */
+    .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
+      gap:12px;
+      padding: 10px 12px;
+      border: 1px solid var(--hair);
+      border-radius: 999px;
+      background: rgba(255,255,255,.35);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 28px rgba(0,0,0,.06);
     }
     .brand{
       display:flex;
@@ -75,232 +65,171 @@
       gap:12px;
       min-width: 240px;
     }
-    .mark{
-      width: 40px; height: 40px;
+    .badge{
+      width: 40px;
+      height: 40px;
       border-radius: 12px;
+      border: 1px solid var(--hair);
       background:
-        radial-gradient(18px 18px at 30% 35%, rgba(255,255,255,.35), transparent 65%),
-        conic-gradient(from 210deg, rgba(99,102,241,.95), rgba(16,185,129,.70), rgba(236,72,153,.60), rgba(99,102,241,.95));
-      box-shadow: 0 12px 28px rgba(0,0,0,.35);
-      position: relative;
-      overflow: hidden;
-    }
-    .mark:after{
-      content:"";
-      position:absolute; inset:-20%;
-      background: radial-gradient(circle at 50% 50%, rgba(0,0,0,.15), rgba(0,0,0,.65));
-      mix-blend-mode: multiply;
-    }
-    .brandText{
-      display:flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-    .brandText .top{
-      font-size: 13px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      margin: 0;
-      color: rgba(255,255,255,.90);
+        radial-gradient(18px 18px at 30% 35%, rgba(0,0,0,.10), transparent 70%),
+        linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.45));
+      display:grid;
+      place-items:center;
       font-weight: 800;
-    }
-    .brandText .sub{
-      font-size: 12px;
-      color: rgba(255,255,255,.55);
       letter-spacing: .06em;
-      margin-top: 3px;
+      font-family: Fraunces, serif;
+    }
+    .brandtext{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .brandtext .name{
+      font-family: Fraunces, serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+    .brandtext .sub{
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .06em;
+      margin-top: 4px;
     }
 
     nav{
       display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
       align-items:center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
     }
-    .navLink{
+    .navlink{
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
       padding: 10px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      font-size: 12px;
-      color: rgba(255,255,255,.78);
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
+      border: 1px solid var(--hair2);
+      background: rgba(255,255,255,.35);
+      transition: transform .08s ease, background .2s ease;
     }
-    .navLink:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.20);
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 12px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 999px;
-      background: rgba(0,0,0,.18);
-      font-size: 12px;
-      color: rgba(255,255,255,.70);
-    }
-    .dot{
-      width: 8px; height: 8px;
-      border-radius: 999px;
-      background: rgba(16,185,129,.9);
-      box-shadow: 0 0 0 4px rgba(16,185,129,.15);
-    }
+    .navlink:hover{ transform: translateY(-1px); background: rgba(255,255,255,.55); }
 
     /* Layout */
     .grid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-      margin-top: 22px;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 16px;
+      margin-top: 16px;
     }
     @media (max-width: 920px){
       .grid{ grid-template-columns: 1fr; }
       .brand{ min-width: unset; }
-      nav{ justify-content: flex-start; }
+      nav{ justify-content:flex-start; }
     }
 
     .card{
       border: 1px solid var(--hair);
       border-radius: var(--r);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background: var(--card);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
       overflow:hidden;
     }
     .section{
       padding: 22px;
     }
     .section + .section{
-      border-top: 1px solid rgba(255,255,255,.08);
+      border-top: 1px solid var(--hair2);
+      background: rgba(255,255,255,.30);
     }
+
+    /* Hero */
     .kicker{
-      display:flex;
+      display:inline-flex;
       align-items:center;
       gap:10px;
       font-size: 12px;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.72);
+      color: var(--muted);
     }
-    .kicker b{
-      color: rgba(255,255,255,.92);
-      font-weight: 700;
+    .kicker .dot{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: rgba(18,18,18,.45);
     }
     .h1{
-      margin: 12px 0 10px;
-      font-size: clamp(32px, 4.2vw, 52px);
-      letter-spacing: -0.04em;
-      line-height: 1.04;
+      margin: 10px 0 10px;
+      font-family: Fraunces, serif;
+      font-size: clamp(34px, 4.6vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
     }
     .lead{
       margin: 0;
+      color: var(--muted);
       font-size: 16px;
       line-height: 1.65;
-      color: var(--muted);
-      max-width: 72ch;
+      max-width: 70ch;
     }
-
-    /* Hero image area */
-    .heroImage{
-      margin-top: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 16px;
-      overflow:hidden;
-      background: rgba(0,0,0,.22);
-      position: relative;
-      min-height: 220px;
-    }
-    .heroImage img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display:block;
-      opacity: .92;
-    }
-    .heroImage .placeholder{
-      position:absolute; inset:0;
+    .cta{
       display:flex;
-      align-items:center;
-      justify-content:center;
-      color: rgba(255,255,255,.62);
-      font-size: 13px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      background:
-        radial-gradient(320px 220px at 30% 40%, rgba(255,255,255,.10), transparent 60%),
-        radial-gradient(420px 260px at 75% 40%, rgba(255,255,255,.06), transparent 60%),
-        rgba(0,0,0,.22);
-    }
-
-    /* Buttons */
-    .row{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
       margin-top: 16px;
+      align-items:center;
     }
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap: 10px;
+      gap:10px;
       padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      border-radius: 14px;
+      border: 1px solid var(--hair);
+      background: rgba(255,255,255,.72);
       font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.22); }
-    .btn.primary{
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.22);
-    }
-    .btn .arrow{
-      width: 18px; height: 18px;
-      border-radius: 6px;
-      background: rgba(255,255,255,.10);
-      display:grid;
-      place-items:center;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    /* Sidebar panels */
-    .panel{
-      border: 1px solid var(--hair2);
-      border-radius: 16px;
-      background: rgba(0,0,0,.18);
-      padding: 16px;
-    }
-    .panel h3{
-      margin: 0 0 8px;
-      font-size: 12px;
-      letter-spacing: .16em;
+      font-size: 13px;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.84);
+      transition: transform .08s ease, background .2s ease;
     }
-    .panel p{
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--muted);
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.92); }
+    .btn.secondary{
+      background: rgba(255,255,255,.45);
     }
-    .panel + .panel{ margin-top: 12px; }
 
-    /* Beer list */
-    .beerGrid{
+    /* Beer list (tapboard feel) */
+    .tapboard{
+      border: 1px dashed rgba(18,18,18,.24);
+      border-radius: 16px;
+      background: rgba(255,255,255,.45);
+      padding: 16px;
       margin-top: 14px;
+    }
+    .tapboardHeader{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
+    .tapboardHeader h2{
+      margin:0;
+      font-family: Fraunces, serif;
+      font-size: 18px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .tapboardHeader span{
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+    .beerGrid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
@@ -309,62 +238,83 @@
       .beerGrid{ grid-template-columns: 1fr; }
     }
     .beer{
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid var(--hair2);
       border-radius: 16px;
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.70);
       padding: 14px;
     }
     .beerTop{
       display:flex;
+      justify-content:space-between;
+      gap:10px;
       align-items:flex-start;
-      justify-content: space-between;
-      gap: 10px;
     }
     .beerName{
+      margin:0;
       font-weight: 800;
-      letter-spacing: .02em;
-      margin: 0;
-      font-size: 15px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 13px;
     }
     .beerMeta{
+      margin-top: 6px;
       font-size: 12px;
-      color: rgba(255,255,255,.62);
+      color: var(--muted);
       letter-spacing: .06em;
-      margin-top: 4px;
       text-transform: uppercase;
     }
     .tag{
       font-size: 11px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
       padding: 7px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.70);
+      border: 1px solid var(--hair2);
+      background: rgba(255,255,255,.60);
+      color: rgba(18,18,18,.78);
       white-space: nowrap;
+      height: fit-content;
     }
     .beerDesc{
       margin: 10px 0 0;
-      color: rgba(255,255,255,.72);
       font-size: 13px;
-      line-height: 1.5;
+      color: rgba(18,18,18,.78);
+      line-height: 1.55;
+    }
+
+    /* Sidebar panels */
+    .panel{
+      border: 1px solid var(--hair);
+      border-radius: 16px;
+      background: rgba(255,255,255,.55);
+      padding: 16px;
+    }
+    .panel + .panel{ margin-top: 12px; }
+    .panel h3{
+      margin:0 0 8px;
+      font-family: Fraunces, serif;
+      font-size: 14px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+    .panel p{
+      margin:0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
     }
 
     /* Footer */
     footer{
-      margin-top: 18px;
-      padding: 14px 8px 0;
-      display:flex;
-      justify-content: space-between;
-      align-items:flex-start;
-      gap: 12px;
-      color: rgba(255,255,255,.55);
+      margin-top: 14px;
+      padding: 10px 4px 0;
+      color: rgba(18,18,18,.62);
       font-size: 12px;
-      flex-wrap: wrap;
-    }
-    .fineprint{
-      max-width: 72ch;
-      color: rgba(255,255,255,.50);
-      line-height: 1.5;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
     }
     .ig{
       display:inline-flex;
@@ -372,195 +322,146 @@
       gap:10px;
       padding: 10px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.03);
+      border: 1px solid var(--hair2);
+      background: rgba(255,255,255,.55);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
     }
-    .ig svg{ opacity: .85; }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="headInner">
+  <div class="wrap">
+    <div class="topbar">
       <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
-        <div class="brandText">
-          <div class="top">THE VORTEX</div>
+        <div class="badge" aria-hidden="true">V</div>
+        <div class="brandtext">
+          <div class="name">The Vortex</div>
           <div class="sub">Brewing Co. • Niagara</div>
         </div>
       </div>
 
       <nav>
-        <a class="navLink" href="#beer">Beer</a>
-        <a class="navLink" href="#where">Where to Find</a>
-        <a class="navLink" href="#about">About</a>
-        <a class="navLink" href="#contact">Contact</a>
-        <div class="pill" title="Status">
-          <span class="dot" aria-hidden="true"></span>
-          <span>In development</span>
-        </div>
+        <a class="navlink" href="#beer">Beer</a>
+        <a class="navlink" href="#where">Where</a>
+        <a class="navlink" href="#about">About</a>
+        <a class="navlink" href="#contact">Contact</a>
       </nav>
     </div>
-  </header>
 
-  <div class="wrap">
     <div class="grid">
-      <!-- Main column -->
+      <!-- Main -->
       <div class="card">
         <div class="section">
-          <div class="kicker"><b>The Vortex Brewing Co.</b> / lose track of time</div>
-          <h1 class="h1">Lose track of time.</h1>
+          <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Brewing in progress</span></div>
+          <div class="h1">Lose track of time.</div>
           <p class="lead">
-            The Vortex started as a basement you’d go down to for “one beer”… then look up and realize hours are gone.
+            “The Vortex” was the basement you’d go down to for one beer… then look up and realize hours are gone.
             We’re building a beer brand that feels like that: simple, drinkable, and made for long hangs.
           </p>
 
-          <div class="row">
-            <a class="btn primary" href="https://instagram.com/Thevortex" target="_blank" rel="noopener">
-              Follow updates <span class="arrow">↗</span>
-            </a>
-            <a class="btn" href="#beer">
-              View the draft list <span class="arrow">→</span>
-            </a>
+          <div class="cta">
+            <a class="btn" href="https://instagram.com/Thevortex" target="_blank" rel="noopener">Follow updates</a>
+            <a class="btn secondary" href="#beer">See the tap list</a>
           </div>
 
-          <!-- HERO IMAGE: replace "hero.jpg" with your own photo filename if you add one -->
-          <div class="heroImage" aria-label="Brewery / beer photo">
-            <!-- If you upload a photo to your repo (same folder as index.html), name it hero.jpg and uncomment the img tag below -->
-            <!-- <img src="hero.jpg" alt="Beer pour / cans / taproom" /> -->
-            <div class="placeholder">Add a beer photo (hero.jpg)</div>
-          </div>
-        </div>
-
-        <div class="section" id="beer">
-          <div class="kicker"><b>Beer</b> / draft list</div>
-          <p class="lead" style="margin-top:10px;">
-            We’re testing recipes and dialing in our first release. Nothing is “final-final” yet — but this is the direction.
-          </p>
-
-          <div class="beerGrid">
-            <div class="beer">
-              <div class="beerTop">
-                <div>
-                  <p class="beerName">Vortex Lager</p>
-                  <div class="beerMeta">Lager • 4.8% (target)</div>
-                </div>
-                <span class="tag">Testing</span>
-              </div>
-              <p class="beerDesc">Clean, crisp, and built for the second one. The beer you keep coming back to.</p>
+          <div class="tapboard" id="beer">
+            <div class="tapboardHeader">
+              <h2>Draft List</h2>
+              <span>Testing / R&amp;D</span>
             </div>
 
-            <div class="beer">
-              <div class="beerTop">
-                <div>
-                  <p class="beerName">Vortex Pale</p>
-                  <div class="beerMeta">Pale Ale • 5.2% (target)</div>
+            <div class="beerGrid">
+              <div class="beer">
+                <div class="beerTop">
+                  <div>
+                    <p class="beerName">Vortex Lager</p>
+                    <div class="beerMeta">Lager • 4.8% (target)</div>
+                  </div>
+                  <span class="tag">Testing</span>
                 </div>
-                <span class="tag">R&amp;D</span>
+                <p class="beerDesc">Clean, crisp, and built for the second one. The default choice.</p>
               </div>
-              <p class="beerDesc">Light hop character, easy finish. Not an aggressive IPA — just a good hang.</p>
-            </div>
 
-            <div class="beer">
-              <div class="beerTop">
-                <div>
-                  <p class="beerName">Basement Batch</p>
-                  <div class="beerMeta">Rotating • Seasonal</div>
+              <div class="beer">
+                <div class="beerTop">
+                  <div>
+                    <p class="beerName">Vortex Pale</p>
+                    <div class="beerMeta">Pale Ale • 5.2% (target)</div>
+                  </div>
+                  <span class="tag">R&amp;D</span>
                 </div>
-                <span class="tag">Later</span>
+                <p class="beerDesc">Easy hop character, smooth finish. Not an aggressive IPA.</p>
               </div>
-              <p class="beerDesc">Small, fun runs when it makes sense. If it’s real, we’ll post it.</p>
-            </div>
 
-            <div class="beer">
-              <div class="beerTop">
-                <div>
-                  <p class="beerName">Draft Only</p>
-                  <div class="beerMeta">Tap feature</div>
+              <div class="beer">
+                <div class="beerTop">
+                  <div>
+                    <p class="beerName">Basement Batch</p>
+                    <div class="beerMeta">Rotating • Seasonal</div>
+                  </div>
+                  <span class="tag">Later</span>
                 </div>
-                <span class="tag">Idea</span>
+                <p class="beerDesc">Small runs when it makes sense. If it’s real, we’ll post it.</p>
               </div>
-              <p class="beerDesc">A simple tap-only option built for bars that want something clean and reliable.</p>
+
+              <div class="beer">
+                <div class="beerTop">
+                  <div>
+                    <p class="beerName">Draft Only</p>
+                    <div class="beerMeta">Tap feature</div>
+                  </div>
+                  <span class="tag">Idea</span>
+                </div>
+                <p class="beerDesc">A simple tap-only option built for bars that want reliable and clean.</p>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="section" id="where">
-          <div class="kicker"><b>Where to Find</b> / stockists</div>
-          <p class="lead" style="margin-top:10px;">
-            Launching in Niagara. First taps and stockists will be announced on Instagram as they’re confirmed.
+          <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Where to find</span></div>
+          <p class="lead">
+            Launching in Niagara. First taps and stockists will be announced as they’re confirmed.
           </p>
-
-          <div class="row">
-            <a class="btn" href="https://instagram.com/Thevortex" target="_blank" rel="noopener">
-              See announcements <span class="arrow">↗</span>
-            </a>
-            <a class="btn" href="#contact">
-              Bars / retailers <span class="arrow">→</span>
-            </a>
-          </div>
         </div>
 
         <div class="section" id="about">
-          <div class="kicker"><b>About</b> / the story</div>
-          <p class="lead" style="margin-top:10px;">
-            “The Vortex” wasn’t a brand at first — it was a place. A basement where time disappeared:
-            beers, friends, music, and the kind of night you don’t plan. We’re turning that feeling into a beer you can
-            find outside the basement too.
+          <div class="kicker"><span class="dot" aria-hidden="true"></span><span>About</span></div>
+          <p class="lead">
+            The Vortex is about the hang: the kind of night you don’t plan, with people you’d rather not leave.
+            We’re building beer that fits that moment — not beer that needs a speech.
           </p>
         </div>
 
         <div class="section" id="contact">
-          <div class="kicker"><b>Contact</b> / for bars &amp; collaborators</div>
-          <p class="lead" style="margin-top:10px;">
-            For early access, collabs, or bar interest: DM us on Instagram for now.
-            (We’ll add a proper contact email once the first release is locked.)
+          <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Contact</span></div>
+          <p class="lead">
+            Bars / retailers / collabs: DM us on Instagram for now. We’ll add an email once the first release is locked.
           </p>
-
-          <div class="row">
-            <a class="btn primary" href="https://instagram.com/Thevortex" target="_blank" rel="noopener">
-              DM @Thevortex <span class="arrow">↗</span>
-            </a>
-          </div>
         </div>
       </div>
 
       <!-- Sidebar -->
       <div>
-        <div class="card section" style="padding:18px;">
-          <div class="panel">
-            <h3>Status</h3>
-            <p>We’re in the build + test phase. Follow along for updates, tastings, and the first confirmed taps.</p>
-          </div>
+        <div class="panel">
+          <h3>Status</h3>
+          <p>We’re testing recipes and building the brand. Updates are posted first on Instagram.</p>
+        </div>
 
-          <div class="panel">
-            <h3>What we stand for</h3>
-            <p>
-              Simple, drinkable beer. No overcomplication. Good nights with good people.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Instagram</h3>
-            <p>Updates and announcements live here first.</p>
-            <div class="row" style="margin-top:10px;">
-              <a class="ig" href="https://instagram.com/Thevortex" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M17.7 6.6h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                </svg>
-                <span>@Thevortex</span>
-              </a>
-            </div>
+        <div class="panel">
+          <h3>How to follow</h3>
+          <p>If you want to see first taps, first cans, and the story as it happens—this is where.</p>
+          <div style="margin-top:12px;">
+            <a class="ig" href="https://instagram.com/Thevortex" target="_blank" rel="noopener">@Thevortex</a>
           </div>
         </div>
 
         <footer>
           <div>© <span id="y"></span> The Vortex Brewing Co.</div>
-          <div class="fineprint">
-            This is an early project site. Availability, releases, and locations will be announced as confirmed.
-          </div>
+          <div>Early project site.</div>
         </footer>
       </div>
     </div>
